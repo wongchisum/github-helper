@@ -2,6 +2,8 @@
 
 该扩展为 GitHub 仓库页面添加了一组实用按钮，方便开发者快速访问与仓库相关的开发工具和搜索功能。
 
+DeepWiki: https://deepwiki.com/wongchisum/github-helper
+
 ## 效果图
 
 ![效果图](https://github.com/wongchisum/github-helper/blob/release/TinySnap.png?raw=true)
