@@ -1,50 +1,82 @@
-# React + Vite + CRXJS
+# GitHub Helper Chrome 扩展
 
-This template helps you quickly start developing Chrome extensions with React, TypeScript and Vite. It includes the CRXJS Vite plugin for seamless Chrome extension development.
+该扩展为 GitHub 仓库页面添加了一组实用按钮，方便开发者快速访问与仓库相关的开发工具和搜索功能。
 
-## Features
+## 功能特性
 
-- React with TypeScript
-- TypeScript support
-- Vite build tool
-- CRXJS Vite plugin integration
-- Chrome extension manifest configuration
+- **Copilot**：快速启动 GitHub Copilot 聊天
+- **Deep Wiki**：跳转到该仓库的 DeepWiki 页面
+- **VsCode Online**：在 GitHub 的在线 VSCode 环境中打开仓库
+- **StackBlitz**：在 StackBlitz 中打开仓库
+- **Similar Search**：根据仓库主题(topics)搜索相似仓库
 
-## Quick Start
+## 使用场景
 
-1. Install dependencies:
+当你在 GitHub 上浏览一个仓库时，本扩展会在页面顶部添加一组按钮，你可以：
+
+1. 快速启动 Copilot 对话
+2. 跳转到该仓库的 DeepWiki 页面查看文档
+3. 在浏览器中直接使用 VSCode 在线编辑仓库
+4. 在 StackBlitz 中打开仓库进行在线开发
+5. 根据仓库主题搜索相似仓库，方便项目调研
+
+## 开发方式
+
+### 技术栈
+
+- React 19
+- TypeScript
+- Vite 构建工具
+- CRXJS Vite 插件（用于 Chrome 扩展开发）
+
+### 项目结构
+
+```
+├── src
+│ ├── components # 公共组件
+│ ├── content # 内容脚本（注入到网页的脚本）
+│ └── ... # 其他扩展部分（如弹窗、后台脚本等）
+├── manifest.config.ts # 扩展的 manifest 配置文件
+└── ... # 其他配置文件
+
+
+```
+
+### 快速开始
+
+1. **安装依赖**
 
 ```bash
 npm install
-```
 
-2. Start development server:
-
-```bash
+2. **启动项目**
 npm run dev
 ```
 
-3. Build for production:
+开发模式下，Vite 会启动热重载服务，并在 dist 目录生成开发版本的扩展。在 Chrome 中加载 dist 目录即可测试。
+
+3. **构建生产版本**
 
 ```bash
 npm run build
 ```
 
-## Project Structure
+构建完成后，dist 目录下将生成生产版本的扩展。
 
-- `src/popup/` - Extension popup UI
-- `src/content/` - Content scripts
-- `manifest.config.ts` - Chrome extension manifest configuration
+### 代码说明
 
-## Documentation
+核心内容脚本位于 `src/content/github-helper.tsx`，它会在 GitHub 仓库页面注入一组按钮。主要逻辑：
 
-- [React Documentation](https://reactjs.org/)
-- [Vite Documentation](https://vitejs.dev/)
-- [CRXJS Documentation](https://crxjs.dev/vite-plugin)
+获取当前仓库信息（作者、仓库名、主题）
 
-## Chrome Extension Development Notes
+根据仓库信息生成各个服务的链接
 
-- Use `manifest.config.ts` to configure your extension
-- The CRXJS plugin automatically handles manifest generation
-- Content scripts should be placed in `src/content/`
-- Popup UI should be placed in `src/popup/`
+渲染按钮组件
+
+### 依赖说明
+
+@crxjs/vite-plugin：用于将 Vite 项目打包为 Chrome 扩展
+
+vite：构建工具
+
+react & react-dom：UI 库
