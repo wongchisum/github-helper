@@ -2,6 +2,10 @@
 
 该扩展为 GitHub 仓库页面添加了一组实用按钮，方便开发者快速访问与仓库相关的开发工具和搜索功能。
 
+## 效果图
+
+![效果图](https://github.com/wongchisum/github-helper/blob/release/TinySnap.png?raw=true)
+
 ## 功能特性
 
 - **Copilot**：快速启动 GitHub Copilot 聊天
